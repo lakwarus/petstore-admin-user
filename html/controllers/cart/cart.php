@@ -15,6 +15,12 @@ switch ($cart_action) {
         addToCart($pet_id, $pet_price, $pet_image);
         break;
 
+    case "removeFromcart":
+        $pet_id = htmlspecialchars($_POST["pet_id"]);
+        $cart = $_SESSION['cart'];
+        removeFromCart($pet_id, $cart);
+        break;
+
     default:
         echo "Invalid API call";
 }

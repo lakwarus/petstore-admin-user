@@ -85,6 +85,16 @@ function addToCart($pet_id, $pet_price, $pet_image){
         $_SESSION['cart'] = array();
     }
 
+}
 
+function removeFromCart($pet_id, $cart){
+
+    for($i = count($cart)-1; $i >= 0; $i--){
+        if(isset($cart[$i]["id"]) && ($cart[$i]["id"] == $pet_id)){
+            unset($cart[$i]);
+        }
+    }
+    $_SESSION['cart'] = $cart;
+    echo json_encode(array('status' => 'success', 'message' => 'Pet remove from your cart successfully'));
 }
 ?>
